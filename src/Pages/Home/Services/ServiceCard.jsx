@@ -1,10 +1,10 @@
 import PropTypes from 'prop-types'
 import { Link } from 'react-router-dom';
 const ServiceCard = ({ service }) => {
-  const { title, img, price, _id} = service;
+  const { _id, img, title, price } = service || {}
   return (
-    <div>
-      <div className="card w-96 mx-auto bg-base-100 shadow-xl">
+    <div className='grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-5'>
+      <div key={_id} className="card w-96 mx-auto bg-base-100 shadow-xl">
         <figure className="px-10 pt-10">
           <img src={img} alt="Shoes" className="rounded-xl" />
         </figure>
@@ -18,10 +18,15 @@ const ServiceCard = ({ service }) => {
           </div>
         </div>
       </div>
+      {/* { */}
+      {/* service?.map(ser => (    */}
+      {/* )) */}
+      {/* } */}
+
     </div>
   );
 };
 ServiceCard.propTypes = {
-  service: PropTypes.object.isRequired
+  service: PropTypes.array,
 };
 export default ServiceCard;
